@@ -16,6 +16,9 @@
 
       <section class="beers">
         <h2>Beers</h2>
+        <div id="addBtn">
+
+        </div>
         <ul class="beers-list">
 
         </ul>
@@ -38,14 +41,15 @@
         </div>
         <p>Rate the beer, where 5 is very good and 1 not good at all </p>
         <select id="rating">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <option data-val="1">1</option>
+          <option data-val="2">2</option>
+          <option data-val="3">3</option>
+          <option data-val="4">4</option>
+          <option data-val="5">5</option>
         </select>
         <div></div><br>
         <button type="button" class="btn btn-primary post-beer">Post</button>
+        <button type="button" class="btn btn-success rate-beer">Rating</button>
 
 
       </form>
