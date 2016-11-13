@@ -1,53 +1,53 @@
 var beers = [];
-	console.log(beers);
 
-	//functions
+//functions
 
-//add a new beer inside the array beers
-function addBeer(name, category, rate) {
+//function module
+var BeerReviewApp = function() {
 
-	var newBeer = {
-		name:name,
-		category:category,
-		rate:rate
+	var addBeer = function(name, category, rate){
+
+		var newBeer = {
+			name:name,
+			category:category,
+			rate:rate
+		};
+
+		beers.push(newBeer);
+
+		name = $('.beer-input').val('');
+		category = $('.category-input').val('');
+
 	};
 
-	beers.push(newBeer);
-
-	name = $('.beer-input').val('');
-	category = $('.category-input').val('');
-}
-
-
-function updateBeers(){
-	//empty the li list
-	$('.beers-list li').remove();
-
-
+	var renderBeer = function(){
+		$('.beers-list li').remove();
 
 	//print the data from the main array
-	for (var i = 0; i < beers.length; i++) {
-		var name = beers[i].name;
-		var category = beers[i].category;
-		var rate = beers[i].rate;
-
-		console.log(beers);
-		//add button if beers array has more than two beers
-		// if(beers.length > 1 ){
-		// 	$('#addBtn').append('<button type="button" class="btn btn-default">check rating</button');
-		// }
-
-		//create a tab with the list of beers
-
-		$('.beers-list').append('<li> name: ' + name + ', category: ' + category + ', rate: ' + rate +'</li>');
-	}
-}
+		for (var i = 0; i < beers.length; i++) {
+			var name = beers[i].name;
+			var category = beers[i].category;
+			var rate = beers[i].rate;
 
 
-$(document).ready(function() {
+			//create a tab with the list of beers
 
-//event handlers
+			$('.beers-list').append('<li> name: ' + name + ', category: ' + category + ', rate: ' + rate +'</li>');
+		}
+	};
+
+	return {
+		addBeer:addBeer,
+		renderBeer:renderBeer
+	};
+};
+
+
+var app = BeerReviewApp();
+
+//handlers
 $('.post-beer').on('click', function(e) {
+
 	e.preventDefault();
 
 	var name = $('.beer-input').val();
@@ -56,22 +56,12 @@ $('.post-beer').on('click', function(e) {
 	var rate = $('option:selected').data().val;
 
 
-	addBeer(name, category, rate);
+	app.addBeer(name, category, rate);
 
-	updateBeers();
-});
-
-//rate beer the biggest and smaller rating
-$('.rate-beer').on('click', function() {
-
-	for(var category in beers) {
-
-	}
-});
-
-
+	app.renderBeer();
 
 });
+
 
 //implement form validation
 //add a table with the data
