@@ -1,9 +1,9 @@
-var beers = [];
 
-//functions
 
 //function module
 var BeerReviewApp = function() {
+
+	var beers = [];
 
 	var addBeer = function(name, category, rate){
 
